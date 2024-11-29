@@ -14,7 +14,7 @@ jobs:
       actions: read
     env:
       MOBB_API_TOKEN: ${{ secrets.MOBB_API_TOKEN }}
-      PROJECT_ID: "862694b7-4e2c-4d04-875d-273e9600cc35"  # Set your Project ID here
+      PROJECT_ID: "dd429b62-8998-488c-b3ed-906aa9e0db0c"  # Set your Project ID here
 
     steps:
       - name: Checkout repository
