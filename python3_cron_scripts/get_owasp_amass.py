@@ -195,7 +195,7 @@ def main(logger=None):
         for entry in results:
             zones.append(entry["zone"])
     elif args.exclude_regex is not None and len(args.exclude_regex) > 0:
-        exclude_re = re.compile(".*" + args.exclude_regex + ".*")
+        exclude_re = re.compile(".*" + re.escape(args.exclude_regex) + ".*")
         zone_collection = mongo_connector.get_zone_connection()
         results = mongo_connector.perform_find(
             zone_collection,
