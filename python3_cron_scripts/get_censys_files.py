@@ -31,6 +31,8 @@ from libs3.LoggingUtil import LoggingUtil
 from requests.auth import HTTPBasicAuth
 
 # Censys authentication information
+import html
+
 CENSYS_API = "https://www.censys.io/api/v1/"
 CENSYS_APP_ID = "CENSYS_APP_ID"
 CENSYS_SECRET = "CENSYS_SECRET"
@@ -127,7 +129,7 @@ def main(logger=None):
         logger.error("Already downloaded. Exiting...")
         exit(0)
     else:
-        logger.info("Old timestamp: " + last_timestamp)
+        logger.info(html.escape(str("Old timestamp: " + last_timestamp).replace("\r", "-").replace("\n", "-")))
         logger.info("New timestamp: " + timestamp)
 
     # Get the location of the details for the new file
