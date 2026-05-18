@@ -554,7 +554,7 @@ def main(logger=None):
         args.job_number,
         args.starting_index,
     )
-    logger.info("Starting Index: " + str(starting_index))
+    logger.info(html.escape(str("Starting Index: " + str(starting_index)).replace("\r", "-").replace("\n", "-")))
 
     sth_data = fetch_sth(logger, "https://" + ct_log_map["url"], jobs_manager)
     if sth_data is None:
