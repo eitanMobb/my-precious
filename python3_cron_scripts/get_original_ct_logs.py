@@ -611,7 +611,7 @@ def main(logger=None):
 
             cert = x509parser.parse_data(der_cert, source)
             if cert is None:
-                logger.warning("Skipping certificate index: " + str(current_index))
+                logger.warning(html.escape(str("Skipping certificate index: " + str(current_index)).replace("\r", "-").replace("\n", "-")))
                 current_index = current_index + 1
                 continue
 
