@@ -56,6 +56,8 @@ from requests.exceptions import Timeout
 from urllib3.util import Retry
 
 
+import html
+
 def requests_retry_session(
     retries=5,
     backoff_factor=7,
@@ -624,12 +626,12 @@ def main(logger=None):
                 cert[source + "_id"] = current_index
                 cert["zones"] = cert_zones
                 logger.info(
-                    "Adding "
+                    html.escape(str("Adding "
                     + source
                     + " id: "
                     + str(current_index)
                     + " SHA256: "
-                    + cert["fingerprint_sha256"]
+                    + cert["fingerprint_sha256"]).replace("\r", "-").replace("\n", "-"))
                 )
                 insert_certificate(cert, source, ct_collection, cert_zones)
 
