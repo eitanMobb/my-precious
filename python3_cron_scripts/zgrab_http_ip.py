@@ -46,6 +46,8 @@ from libs3 import IPManager, JobsManager, RemoteMongoConnector
 from libs3.LoggingUtil import LoggingUtil
 from libs3.ZoneManager import ZoneManager
 
+import html
+
 global_exit_flag = 0
 global_queue_lock = threading.Lock()
 global_work_queue = queue.Queue()
@@ -500,7 +502,7 @@ def main(logger=None):
 
     threads = []
 
-    logger.debug("Creating " + str(args.t) + " threads")
+    logger.debug(html.escape(str("Creating " + str(args.t) + " threads").replace("\r", "-").replace("\n", "-")))
     for thread_id in range(1, args.t + 1):
         thread = ZgrabThread(
             thread_id,
