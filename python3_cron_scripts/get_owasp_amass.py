@@ -39,6 +39,8 @@ from libs3.LoggingUtil import LoggingUtil
 from libs3.ZoneManager import ZoneManager
 
 
+import html
+
 def is_tracked_zone(cname, zones):
     """
     Does the CNAME belong to a tracked zone?
@@ -302,7 +304,7 @@ def main(logger=None):
                 try:
                     json_data.append(json.loads(line))
                 except:
-                    logger.warning("Amass wrote an incomplete line: " + str(line))
+                    logger.warning(html.escape(str("Amass wrote an incomplete line: " + str(line)).replace("\r", "-").replace("\n", "-")))
             output.close()
 
             for finding in json_data:
