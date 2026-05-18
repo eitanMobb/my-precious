@@ -525,7 +525,7 @@ def main(logger=None):
     try:
         ct_log_map = x509parser.CT_LOG_MAP[source]
     except:
-        logger.error("FATAL: ERROR: UNKNOWN LOG SOURCE: " + source)
+        logger.error(html.escape(str("FATAL: ERROR: UNKNOWN LOG SOURCE: " + source).replace("\r", "-").replace("\n", "-")))
         exit(1)
 
     if args.cert_save_location:
