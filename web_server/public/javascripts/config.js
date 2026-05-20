@@ -11,6 +11,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+const DOMPurify = require('dompurify');
 
 window.addEventListener("load", buildPage);
 
@@ -299,7 +300,7 @@ function display_zone(results) {
 
     last_zone_id = results['_id'];
 
-    document.getElementById("zoneResult").innerHTML = displayHTML;
+    document.getElementById("zoneResult").innerHTML = DOMPurify.sanitize(displayHTML);
 }
 
 function display_ip_zone(results) {
