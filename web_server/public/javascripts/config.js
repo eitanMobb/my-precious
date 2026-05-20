@@ -11,6 +11,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+const DOMPurify = require('dompurify');
 
 window.addEventListener("load", buildPage);
 
@@ -432,7 +433,7 @@ function display_user_table(results) {
 
     displayHTML += end_table() + "<br/>";
 
-    document.getElementById("userList").innerHTML = displayHTML;
+    document.getElementById("userList").innerHTML = DOMPurify.sanitize(displayHTML);
 }
 
 function compare(a, b) {
