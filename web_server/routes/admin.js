@@ -1082,7 +1082,7 @@ module.exports = function (envConfig) {
                     newZone.notes = [];
                     newZone.save(function (err) {
                         if (err) {
-                            res.status(500).send(err);
+                            res.status(500).send('Unexpected error: mobb-a58acac2ced2f389d2ef2469f89847cd');
                             return;
                         }
 
