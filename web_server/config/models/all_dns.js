@@ -72,7 +72,7 @@ module.exports = {
          * (Optional) Limit to the provided source.
          */
         let query = {
-            'type': 'a',
+            'type': mongoSanitize.sanitize({ data: 'a' }).data,
             'value': ip,
         };
         if (source != null) {
