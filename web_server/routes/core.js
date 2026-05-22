@@ -12,6 +12,7 @@
  * governing permissions and limitations under the License.
  */
 
+const rateLimit = require('express-rate-limit');
 const express = require('express');
 const router = express.Router();
 
@@ -57,7 +58,7 @@ function getSessionParams(req) {
 }
 
 module.exports = function (envConfig) {
-    router.get('/', function (req, res) {
+    router.get('/', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/index', params);
@@ -68,55 +69,55 @@ module.exports = function (envConfig) {
         return
     });
 
-    router.get('/cert', function (req, res) {
+    router.get('/cert', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/cert', params);
     });
 
-    router.get('/cert_graph', function (req, res) {
+    router.get('/cert_graph', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/cert_graph', params);
     });
 
-    router.get('/domain', function (req, res) {
+    router.get('/domain', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/domain', params);
     });
 
-    router.get('/graph', function (req, res) {
+    router.get('/graph', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/graph', params);
     });
 
-    router.get('/help', function (req, res) {
+    router.get('/help', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/help', params);
     });
 
-    router.get('/ip', function (req, res) {
+    router.get('/ip', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/ip', params);
     });
 
-    router.get('/ipv6', function (req, res) {
+    router.get('/ipv6', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/ipv6', params);
     });
 
-    router.get('/ip_range', function (req, res) {
+    router.get('/ip_range', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/ip_range', params);
     });
 
-    router.get('/login', function (req, res) {
+    router.get('/login', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         if (req.query.returnPath && req.query.returnPath.length > 0) {
@@ -128,163 +129,163 @@ module.exports = function (envConfig) {
         res.render('pages/login', params);
     });
 
-    router.get('/logout', function (req, res) {
+    router.get('/logout', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/logout', params);
     });
 
-    router.get('/zone', function (req, res) {
+    router.get('/zone', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/zone', params);
     });
 
-    router.get('/admin/jobs', function (req, res) {
+    router.get('/admin/jobs', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/jobs', params);
     });
 
-    router.get('/admin/stats', function (req, res) {
+    router.get('/admin/stats', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/stats', params);
     });
 
-    router.get('/admin/user', function (req, res) {
+    router.get('/admin/user', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/user', params);
     });
 
-    router.get('/admin/user_config', function (req, res) {
+    router.get('/admin/user_config', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/user_config', params);
     });
 
-    router.get('/admin/data_config', function (req, res) {
+    router.get('/admin/data_config', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/data_config', params);
     });
 
-    router.get('/meta/tpd_list', function (req, res) {
+    router.get('/meta/tpd_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/tpd_list', params);
     });
 
-    router.get('/meta/tpd_list_detail', function (req, res) {
+    router.get('/meta/tpd_list_detail', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/tpd_list_detail', params);
     });
 
-    router.get('/meta/zone_list', function (req, res) {
+    router.get('/meta/zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/zone_list', params);
     });
 
-    router.get('/meta/headers', function (req, res) {
+    router.get('/meta/headers', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/headers', params);
     });
 
-    router.get('/meta/header_details', function (req, res) {
+    router.get('/meta/header_details', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/header_details', params);
     });
 
-    router.get('/meta/ip_zone_list', function (req, res) {
+    router.get('/meta/ip_zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/ip_zone_list', params);
     });
 
-    router.get('/meta/ipv6_zone_list', function (req, res) {
+    router.get('/meta/ipv6_zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/ipv6_zone_list', params);
     });
 
-    router.get('/meta/port_list', function (req, res) {
+    router.get('/meta/port_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/port_list', params);
     });
 
-    router.get('/meta/whois_dns_list', function (req, res) {
+    router.get('/meta/whois_dns_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/whois_dns_list', params);
     });
 
-    router.get('/reports/amazon', function (req, res) {
+    router.get('/reports/amazon', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/amazon', params);
     });
 
-    router.get('/reports/scan_corp_certs', function (req, res) {
+    router.get('/reports/scan_corp_certs', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_corp_certs', params);
     });
 
-    router.get('/reports/scan_algorithm_ssl', function (req, res) {
+    router.get('/reports/scan_algorithm_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_algorithm_ssl', params);
     });
 
-    router.get('/reports/hosts_by_cas', function (req, res) {
+    router.get('/reports/hosts_by_cas', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/hosts_by_cas', params);
     });
 
-    router.get('/reports/scan_expired_ssl', function (req, res) {
+    router.get('/reports/scan_expired_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_expired_ssl', params);
     });
 
-    router.get('/reports/ct_corp_ssl', function (req, res) {
+    router.get('/reports/ct_corp_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/ct_corp_ssl', params);
     });
 
-    router.get('/reports/ct_issuers', function (req, res) {
+    router.get('/reports/ct_issuers', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/ct_issuers', params);
     });
 
-    router.get('/reports/dead_dns', function (req, res) {
+    router.get('/reports/dead_dns', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/dead_dns', params);
     });
 
-    router.get('/reports/display_cert', function (req, res) {
+    router.get('/reports/display_cert', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/display_cert', params);
     });
 
-    router.get('/reports/email', function (req, res) {
+    router.get('/reports/email', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/email', params);
     });
 
-    router.get('/reports/virustotal_threats', function (req, res) {
+    router.get('/reports/virustotal_threats', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/virustotal_threats', params);
