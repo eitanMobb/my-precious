@@ -117,7 +117,7 @@ module.exports = function (envConfig) {
         res.render('pages/ip_range', params);
     });
 
-    router.get('/login', function (req, res) {
+    router.get('/login', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         if (req.query.returnPath && req.query.returnPath.length > 0) {
