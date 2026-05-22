@@ -171,7 +171,7 @@ module.exports = function (envConfig) {
         res.render('pages/admin/data_config', params);
     });
 
-    router.get('/meta/tpd_list', function (req, res) {
+    router.get('/meta/tpd_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/tpd_list', params);
