@@ -273,7 +273,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/dead_dns', params);
     });
 
-    router.get('/reports/display_cert', function (req, res) {
+    router.get('/reports/display_cert', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/display_cert', params);
