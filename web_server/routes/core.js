@@ -87,7 +87,7 @@ module.exports = function (envConfig) {
         res.render('pages/domain', params);
     });
 
-    router.get('/graph', function (req, res) {
+    router.get('/graph', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/graph', params);
