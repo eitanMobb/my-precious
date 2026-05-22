@@ -219,7 +219,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/port_list', params);
     });
 
-    router.get('/meta/whois_dns_list', function (req, res) {
+    router.get('/meta/whois_dns_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/whois_dns_list', params);
