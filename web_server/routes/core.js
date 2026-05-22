@@ -285,7 +285,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/email', params);
     });
 
-    router.get('/reports/virustotal_threats', function (req, res) {
+    router.get('/reports/virustotal_threats', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/virustotal_threats', params);
