@@ -81,7 +81,7 @@ module.exports = function (envConfig) {
         res.render('pages/cert_graph', params);
     });
 
-    router.get('/domain', function (req, res) {
+    router.get('/domain', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/domain', params);
