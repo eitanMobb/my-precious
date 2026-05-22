@@ -243,7 +243,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/scan_algorithm_ssl', params);
     });
 
-    router.get('/reports/hosts_by_cas', function (req, res) {
+    router.get('/reports/hosts_by_cas', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/hosts_by_cas', params);
