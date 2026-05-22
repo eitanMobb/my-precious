@@ -183,7 +183,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/tpd_list_detail', params);
     });
 
-    router.get('/meta/zone_list', function (req, res) {
+    router.get('/meta/zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/zone_list', params);
