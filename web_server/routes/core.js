@@ -129,7 +129,7 @@ module.exports = function (envConfig) {
         res.render('pages/login', params);
     });
 
-    router.get('/logout', function (req, res) {
+    router.get('/logout', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/logout', params);
