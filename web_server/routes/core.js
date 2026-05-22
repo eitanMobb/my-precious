@@ -231,7 +231,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/amazon', params);
     });
 
-    router.get('/reports/scan_corp_certs', function (req, res) {
+    router.get('/reports/scan_corp_certs', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_corp_certs', params);
