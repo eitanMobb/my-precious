@@ -141,7 +141,7 @@ module.exports = function (envConfig) {
         res.render('pages/zone', params);
     });
 
-    router.get('/admin/jobs', function (req, res) {
+    router.get('/admin/jobs', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/jobs', params);
