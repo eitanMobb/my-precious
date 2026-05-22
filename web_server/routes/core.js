@@ -111,7 +111,7 @@ module.exports = function (envConfig) {
         res.render('pages/ipv6', params);
     });
 
-    router.get('/ip_range', function (req, res) {
+    router.get('/ip_range', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/ip_range', params);
