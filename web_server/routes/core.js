@@ -135,7 +135,7 @@ module.exports = function (envConfig) {
         res.render('pages/logout', params);
     });
 
-    router.get('/zone', function (req, res) {
+    router.get('/zone', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/zone', params);
