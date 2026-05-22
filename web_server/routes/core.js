@@ -279,7 +279,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/display_cert', params);
     });
 
-    router.get('/reports/email', function (req, res) {
+    router.get('/reports/email', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/email', params);
