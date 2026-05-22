@@ -201,7 +201,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/header_details', params);
     });
 
-    router.get('/meta/ip_zone_list', function (req, res) {
+    router.get('/meta/ip_zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/ip_zone_list', params);
