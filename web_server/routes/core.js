@@ -237,7 +237,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/scan_corp_certs', params);
     });
 
-    router.get('/reports/scan_algorithm_ssl', function (req, res) {
+    router.get('/reports/scan_algorithm_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_algorithm_ssl', params);
