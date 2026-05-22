@@ -153,7 +153,7 @@ module.exports = function (envConfig) {
         res.render('pages/admin/stats', params);
     });
 
-    router.get('/admin/user', function (req, res) {
+    router.get('/admin/user', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/admin/user', params);
