@@ -249,7 +249,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/hosts_by_cas', params);
     });
 
-    router.get('/reports/scan_expired_ssl', function (req, res) {
+    router.get('/reports/scan_expired_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/scan_expired_ssl', params);
