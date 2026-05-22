@@ -255,7 +255,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/scan_expired_ssl', params);
     });
 
-    router.get('/reports/ct_corp_ssl', function (req, res) {
+    router.get('/reports/ct_corp_ssl', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/ct_corp_ssl', params);
