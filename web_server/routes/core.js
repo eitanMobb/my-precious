@@ -195,7 +195,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/headers', params);
     });
 
-    router.get('/meta/header_details', function (req, res) {
+    router.get('/meta/header_details', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/header_details', params);
