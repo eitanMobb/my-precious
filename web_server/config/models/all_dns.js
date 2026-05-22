@@ -255,7 +255,7 @@ module.exports = {
         let query;
         if (zone) {
             query = {
-                'type': 'cname',
+                'type': mongoSanitize.sanitize({ data: 'cname' }).data,
                 'value': cname,
                 'zone': zone,
             };
