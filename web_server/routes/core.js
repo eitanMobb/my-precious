@@ -99,7 +99,7 @@ module.exports = function (envConfig) {
         res.render('pages/help', params);
     });
 
-    router.get('/ip', function (req, res) {
+    router.get('/ip', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/ip', params);
