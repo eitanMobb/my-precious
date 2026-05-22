@@ -207,7 +207,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/ip_zone_list', params);
     });
 
-    router.get('/meta/ipv6_zone_list', function (req, res) {
+    router.get('/meta/ipv6_zone_list', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/meta/ipv6_zone_list', params);
