@@ -69,7 +69,7 @@ module.exports = function (envConfig) {
         return
     });
 
-    router.get('/cert', function (req, res) {
+    router.get('/cert', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/cert', params);
