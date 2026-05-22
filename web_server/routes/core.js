@@ -58,7 +58,7 @@ function getSessionParams(req) {
 }
 
 module.exports = function (envConfig) {
-    router.get('/', function (req, res) {
+    router.get('/', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/index', params);
