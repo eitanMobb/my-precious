@@ -225,7 +225,7 @@ module.exports = function (envConfig) {
         res.render('pages/meta/whois_dns_list', params);
     });
 
-    router.get('/reports/amazon', function (req, res) {
+    router.get('/reports/amazon', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/amazon', params);
