@@ -12,6 +12,7 @@
  * governing permissions and limitations under the License.
  */
 
+const mongoSanitize = require('express-mongo-sanitize');
 const escapeRegExp = require('lodash.escaperegexp');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -113,7 +114,7 @@ module.exports = {
         let reAmazon = new RegExp('^.*' + subdomain + '\.amazonaws\.com');
 
         let query = {
-            'type': 'cname',
+            'type': mongoSanitize.sanitize({ data: 'cname' }).data,
             'value': reAmazon,
         };
 
