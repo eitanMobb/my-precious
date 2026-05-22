@@ -12,6 +12,7 @@
  * governing permissions and limitations under the License.
  */
 
+const rateLimit = require('express-rate-limit');
 const express = require('express');
 const router = express.Router();
 
@@ -92,7 +93,7 @@ module.exports = function (envConfig) {
         res.render('pages/graph', params);
     });
 
-    router.get('/help', function (req, res) {
+    router.get('/help', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/help', params);
