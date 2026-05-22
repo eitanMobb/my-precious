@@ -261,7 +261,7 @@ module.exports = function (envConfig) {
         res.render('pages/reports/ct_corp_ssl', params);
     });
 
-    router.get('/reports/ct_issuers', function (req, res) {
+    router.get('/reports/ct_issuers', rateLimit({ limit: 60 }), function (req, res) {
         setHeaders(res);
         let params = getSessionParams(req);
         res.render('pages/reports/ct_issuers', params);
