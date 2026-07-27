@@ -93,7 +93,7 @@ module.exports = function (envConfig) {
         return;
       }
 
-      let domain = req.query.target;
+      let domain = String(req.query.target);
       if (!domain) {
         res.status(400).json({ 'Error': 'Please send a target!' });
         return;
